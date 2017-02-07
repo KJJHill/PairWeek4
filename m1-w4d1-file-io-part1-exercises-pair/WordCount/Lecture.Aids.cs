@@ -8,26 +8,17 @@ using System.Text.RegularExpressions;
 
 namespace Lecture.Aids
 {
-    /*
-    * Reading files for input involves working with streams and readers.
-    */
     public static class ReadingInFiles
     {
-        // Reading in a character file involves working with classes that derive from 
-        // TextWriter. TextWriter is an abstract class for working with character input.
-        // The StreamReader inherits from TextWriter and that is often used.
         public static void SentenceWordCounter()
         {
-            // Start with the file path to input
             Console.WriteLine("Input your directory!");
             string directory = Console.ReadLine();
             Console.WriteLine("Input your file-name!");
             string filename = Console.ReadLine();
 
-            // Create the full path
             string fullPath = Path.Combine(directory, filename);
 
-            // Wrap the effort in a try-catch block to handle any exceptions
             try
             {
                 //Open a StreamReader with the using statement
@@ -39,10 +30,6 @@ namespace Lecture.Aids
                     // As we read forward the marker moves forward like a typewriter.
                     while (!sr.EndOfStream)
                     {
-
-                        
-                        
-
                         string pattern = @"(?<!Mr?s?|\b[A-Z])\.\s*\d*";
                         RegexOptions options = RegexOptions.IgnoreCase | RegexOptions.Compiled;
                         string wholeFile = sr.ReadToEnd();
@@ -54,17 +41,10 @@ namespace Lecture.Aids
                         char[] wordSeperators = { ' ' };
                         string[] words = wholeFile.Split(wordSeperators);
 
-                         
-
-
-                        Console.WriteLine($"There are { matches.Count} sentences in the document.");
+                        Console.WriteLine($"There are {matches.Count} sentences in the document.");
                         Console.WriteLine($"There are {words.Count()} words in the document.");
 
-
-                        
-                        // Read in the line
                         string line = sr.ReadLine();
-                        // Print it to the screen
                         Console.WriteLine(line);
                     }
                 }
