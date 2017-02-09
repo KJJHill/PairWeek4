@@ -14,7 +14,7 @@ namespace VendTest.Classes
             logTest.FeedMoneyTransaction(12, 3.25);
 
             VendingMachineItem itemTest = new VendingMachineItem("Potato Crisps", 0.85);
-            logTest.PurchaseAProductTransaction(itemTest);
+            logTest.PurchaseAProductTransaction(itemTest, "A1");
 
             Change changeTest = new Change(25.65);
             logTest.FinishedTransaction(25.65, changeTest);

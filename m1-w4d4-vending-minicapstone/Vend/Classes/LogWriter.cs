@@ -56,7 +56,7 @@ namespace Vend.Classes
             }
         }
 
-        public void PurchaseAProductTransaction(VendingMachineItem productPurchased)
+        public void PurchaseAProductTransaction(VendingMachineItem productPurchased, string productSlot)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace Vend.Classes
                 {
                     sw.Write(DateTime.UtcNow);
                     sw.Write("     {0} was purchased from {1} slot for ${2}.  There are now {3} remaining.",
-                        productPurchased.ProductName, "[INSERT SLOT PARAMETER HERE]", productPurchased.ProductPrice, productPurchased.ProductQuantity);
+                        productPurchased.ProductName, productSlot, productPurchased.ProductPrice, productPurchased.ProductQuantity);
                     sw.WriteLine();
                 }
             }
