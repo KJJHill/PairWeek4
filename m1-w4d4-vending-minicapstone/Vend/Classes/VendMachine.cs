@@ -60,7 +60,7 @@ namespace Vend.Classes
              {
                 itemsStocked[slotNumber].MinusProductQuantity();
                 currentBalance -= itemsStocked[slotNumber].ProductPrice;
-                Console.WriteLine($"Enjoy your {itemsStocked[slotNumber].ProductName}!");
+                Console.WriteLine($"Enjoy your {itemsStocked[slotNumber].ProductName}, there are {currentBalance} dollars remaining in the machine");
              }
              if (itemsStocked[slotNumber].ProductQuantity <= 0)
             {
