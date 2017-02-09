@@ -15,6 +15,10 @@ namespace Vend.Classes
          * 
          * Calculates the sales based on current quantity
          * If any product haven't sold they are marked with an asterisk
-         * These products are low performers */
+         * These products are low performers
+         * 
+         * Gets passed the vending machine
+         * SalesReportWriter(VendMachine)
+         *  */
     }
 }

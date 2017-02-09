@@ -24,6 +24,7 @@ namespace Vend.Classes
          * Coin Count
          * 
          * 
+         * 
          * Writes to TransactionLog.txt 
          */
     }
