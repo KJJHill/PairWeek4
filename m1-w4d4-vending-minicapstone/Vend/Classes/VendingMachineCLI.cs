@@ -10,7 +10,7 @@ namespace Vend.Classes
     {
         /* Determines which menu to display
          * Initially it displays the start menu
-         * Start menu has purchase menu and display menu as options
+         * Start menu has (1) purchase menu and (2) display menu as options
          * 
          * Purchase menu:
          * (1) Feed Money

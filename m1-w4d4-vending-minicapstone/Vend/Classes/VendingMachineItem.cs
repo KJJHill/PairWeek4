@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vend.Classes
 {
-    class VendingMachineItem
+    public class VendingMachineItem
     {
         /* Creates an object for each vending machine item
          * 
@@ -22,5 +22,34 @@ namespace Vend.Classes
          * 
          * 
          *  */
+
+        private string productName;
+        private double productPrice;
+        private int productQuantity = 5;
+
+        public string ProductName
+        {
+            get { return productName; }
+        }
+
+        public double ProductPrice
+        {
+            get { return productPrice; }
+        }
+
+        public int ProductQuantity
+        {
+            get { return productQuantity; }
+        }
+
+        public VendingMachineItem(string productName, double productPrice)
+        {
+            this.productName = productName;
+            this.productPrice = productPrice;
+        }
+        public void MinusProductQuantity()
+        {
+            productQuantity -= 1;
+        }
     }
 }

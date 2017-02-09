@@ -53,13 +53,18 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Classes\ChangeTest.cs" />
-    <Compile Include="Classes\FileReaderTest.cs" />
     <Compile Include="Classes\LogWriterTest.cs" />
     <Compile Include="Classes\SalesReportWriterTest.cs" />
     <Compile Include="Classes\VendingMachineCLITest.cs" />
     <Compile Include="Classes\VendingMachineItemsTest.cs" />
     <Compile Include="Classes\VendMachineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vend\Vend.csproj">
+      <Project>{1d4f5387-df0b-4cff-8305-beb240d1ae44}</Project>
+      <Name>Vend</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

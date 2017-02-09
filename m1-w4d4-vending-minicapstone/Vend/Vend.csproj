@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Change.cs" />
-    <Compile Include="Classes\FileReader.cs" />
     <Compile Include="Classes\LogWriter.cs" />
     <Compile Include="Classes\SalesReportWriter.cs" />
     <Compile Include="Classes\VendingMachineCLI.cs" />
