@@ -17,6 +17,7 @@ namespace Vend.Classes
          * (2) Select Product
          * (3) Finish Transaction
          * Current Balance
+         * 
          * This menu loops until finish transaction is selected */
     }
 }

@@ -23,6 +23,10 @@ namespace Vend.Classes
          * 
          * FinishTransaction()
          * return current balance in change
-         * writes to the log file */
+         * writes to the log file
+         * 
+         * ItemsStocked
+         * CurrentBalance
+         *  */
     }
 }
