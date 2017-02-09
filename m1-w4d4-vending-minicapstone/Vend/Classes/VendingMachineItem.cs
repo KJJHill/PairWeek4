@@ -14,6 +14,13 @@ namespace Vend.Classes
          * Each object will have Name, price, and stock.
          * Stock defaults to 5
          * 
-         * Stored in the dictionary in a slot number */
+         * Stored in the dictionary in a slot number
+         * 
+         * ProductName
+         * ProductPrice
+         * ProductQuantity
+         * 
+         * 
+         *  */
     }
 }
