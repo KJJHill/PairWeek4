@@ -94,6 +94,7 @@ namespace Vend.Classes
                 if (purchaseMenuInput == "3")
                 {
                     theVendingMachine.FinishTransaction();
+                    break;
                 }
             }
         }
