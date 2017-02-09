@@ -43,6 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Change.cs" />
+    <Compile Include="Classes\FileReader.cs" />
+    <Compile Include="Classes\LogWriter.cs" />
+    <Compile Include="Classes\SalesReportWriter.cs" />
+    <Compile Include="Classes\VendingMachineCLI.cs" />
+    <Compile Include="Classes\VendingMachineItem.cs" />
+    <Compile Include="Classes\VendMachine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
