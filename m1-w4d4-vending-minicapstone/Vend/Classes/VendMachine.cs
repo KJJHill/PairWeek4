@@ -74,8 +74,9 @@ namespace Vend.Classes
 
         public void FinishTransaction()
         {
-            
-            //return GetChange(currentBalance);
+
+            Change currentChange = new Change(currentBalance);
+            Console.WriteLine($"Your change is {currentChange.Quarters} quarters, {currentChange.Dimes} dimes, and {currentChange.Nickels} nickels.");
         }
 
         public void LoadInventory()
