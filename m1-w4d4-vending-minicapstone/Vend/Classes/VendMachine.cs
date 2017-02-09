@@ -45,7 +45,14 @@ namespace Vend.Classes
 
         public void FeedMoney(double moneyInserted)
         {
-            currentBalance += moneyInserted;
+            if (moneyInserted >= 0)
+            {
+                currentBalance += moneyInserted;
+            }
+            if (moneyInserted < 0)
+            {
+                Console.WriteLine("That's stealing!!!");
+            }
         }
         public void PurchaseAProduct(string slotNumber)
         {

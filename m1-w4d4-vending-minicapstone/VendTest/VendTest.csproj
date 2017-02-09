@@ -56,7 +56,6 @@
     <Compile Include="Classes\LogWriterTest.cs" />
     <Compile Include="Classes\SalesReportWriterTest.cs" />
     <Compile Include="Classes\VendingMachineCLITest.cs" />
-    <Compile Include="Classes\VendingMachineItemsTest.cs" />
     <Compile Include="Classes\VendMachineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
