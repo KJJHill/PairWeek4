@@ -23,9 +23,11 @@ namespace Vend.Classes
          *  */
 
         private string directory = Environment.CurrentDirectory;
-        private string fileName;
+        private string fileName = "Vendo-Matic-Sales ";
+        private string dateTime = DateTime.UtcNow.ToString().Replace('/', '-').Replace(':', '.');
         private string fullPath;
 
+        private const int STARTINGPRODUCTQUANTITY = 5;
         private double totalSales = 0;
         public double TotalSales
         {
@@ -34,9 +36,9 @@ namespace Vend.Classes
 
         public SalesReportWriter(Dictionary<string, VendingMachineItem> remainingVendingProducts)
         {
-            string dateTime = DateTime.UtcNow.ToString().Replace('/', '-').Replace(':', '.');
-            fileName = "Vendo-Matic-Sales " + dateTime + ".csv";
+            fileName += dateTime + ".csv";
             fullPath = Path.Combine(directory, fileName);
+
             try
             {
                 using (StreamWriter sw = new StreamWriter(fullPath))
@@ -45,14 +47,14 @@ namespace Vend.Classes
                     {
                         sw.Write(kvp.Value.ProductName + "," + kvp.Value.ProductQuantity.ToString());
 
-                        if (kvp.Value.ProductQuantity == 5)
+                        if (kvp.Value.ProductQuantity == STARTINGPRODUCTQUANTITY)
                         {
                             sw.Write(", *Low Performer*");
                         }
 
                         sw.WriteLine();
 
-                        totalSales += (5 - kvp.Value.ProductQuantity) * kvp.Value.ProductPrice;
+                        totalSales += (STARTINGPRODUCTQUANTITY - kvp.Value.ProductQuantity) * kvp.Value.ProductPrice;
                     }
                     sw.WriteLine();
                     sw.WriteLine("**TOTAL SALES** , $" + totalSales);
