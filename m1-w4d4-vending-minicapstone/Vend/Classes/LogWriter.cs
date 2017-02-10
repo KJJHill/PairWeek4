@@ -38,14 +38,14 @@ namespace Vend.Classes
             fullPath = Path.Combine(directory, fileName);
         }
 
-        public void FeedMoneyTransaction(int amountAdded, double updatedBalance)
+        public void FeedMoneyTransaction(double amountAdded, double updatedBalance)
         {
             try
             {
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     sw.Write(DateTime.UtcNow);
-                    sw.Write("     ${0}.00 was added the updated balance is now ${1}.", amountAdded, updatedBalance);
+                    sw.Write($"{amountAdded}.00 was added the updated balance is now ${updatedBalance}.");
                     sw.WriteLine();
                 }
             }
@@ -63,8 +63,7 @@ namespace Vend.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     sw.Write(DateTime.UtcNow);
-                    sw.Write("     {0} was purchased from {1} slot for ${2}.  There are now {3} remaining.",
-                        productPurchased.ProductName, productSlot, productPurchased.ProductPrice, productPurchased.ProductQuantity);
+                    sw.Write($"{productPurchased.ProductName} was purchased from {productSlot} slot for ${productPurchased.ProductPrice}.  There are now {productPurchased.ProductQuantity} remaining.");
                     sw.WriteLine();
                 }
             }
@@ -82,8 +81,7 @@ namespace Vend.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     sw.Write(DateTime.UtcNow);
-                    sw.Write("     The ending balance was {0}. The change given was {1} quarters, {2} dime(s), {3} nickel.  The transaction is now finished.",
-                        currentBalance, changeGiven.Quarters, changeGiven.Dimes, changeGiven.Nickels);
+                    sw.Write($"The ending balance was ${currentBalance}. The change given was {changeGiven.Quarters} quarter(s), {changeGiven.Dimes} dime(s), and {changeGiven.Nickels} nickel(s).  The transaction is now finished.");
                     sw.WriteLine();
                 }
             }

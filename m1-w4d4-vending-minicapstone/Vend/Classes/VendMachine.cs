@@ -53,6 +53,8 @@ namespace Vend.Classes
             {
                 Console.WriteLine("That's stealing!!!");
             }
+            LogWriter newLog = new LogWriter();
+            newLog.FeedMoneyTransaction(moneyInserted,currentBalance);
         }
         public void PurchaseAProduct(string slotNumber)
         {
@@ -60,7 +62,7 @@ namespace Vend.Classes
              {
                 itemsStocked[slotNumber].MinusProductQuantity();
                 currentBalance -= itemsStocked[slotNumber].ProductPrice;
-                Console.WriteLine($"Enjoy your {itemsStocked[slotNumber].ProductName}!");
+                Console.WriteLine($"Enjoy your {itemsStocked[slotNumber].ProductName}, there are {currentBalance} dollars remaining in the machine");
              }
              if (itemsStocked[slotNumber].ProductQuantity <= 0)
             {
@@ -70,6 +72,8 @@ namespace Vend.Classes
             {
                 Console.WriteLine("You haven't inserted enough money to buy that!");
             }
+            LogWriter newLog = new LogWriter();
+            newLog.PurchaseAProductTransaction(itemsStocked[slotNumber],slotNumber);
         }
 
         public void FinishTransaction()
@@ -77,6 +81,8 @@ namespace Vend.Classes
 
             Change currentChange = new Change(currentBalance);
             Console.WriteLine($"Your change is {currentChange.Quarters} quarters, {currentChange.Dimes} dimes, and {currentChange.Nickels} nickels.");
+            LogWriter newLog = new LogWriter();
+            newLog.FinishedTransaction(currentBalance,currentChange);
         }
 
         public void LoadInventory()

@@ -11,12 +11,8 @@ namespace Vend
     {
         public static void Main(string[] args)
         {
-            VendMachine bats = new VendMachine();
-            bats.LoadInventory();
-            foreach (KeyValuePair<string, VendingMachineItem> kvp in bats.ItemsStocked)
-            {
-                Console.WriteLine($"{kvp.Key} {kvp.Value.ProductName} {kvp.Value.ProductPrice} {kvp.Value.ProductQuantity}");
-            }
+            VendMachine newVendingMachine = new VendMachine();
+            VendingMachineCLI runningMachine = new VendingMachineCLI(newVendingMachine);
         }
     }
 }
