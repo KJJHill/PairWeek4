@@ -45,7 +45,7 @@ namespace Vend.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     sw.Write(DateTime.UtcNow);
-                    sw.Write($"{amountAdded}.00 was added the updated balance is now ${updatedBalance}.");
+                    sw.Write($"     ${amountAdded}.00 was added the updated balance is now ${updatedBalance}.");
                     sw.WriteLine();
                 }
             }
@@ -63,7 +63,7 @@ namespace Vend.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     sw.Write(DateTime.UtcNow);
-                    sw.Write($"{productPurchased.ProductName} was purchased from {productSlot} slot for ${productPurchased.ProductPrice}.  There are now {productPurchased.ProductQuantity} remaining.");
+                    sw.Write($"     {productPurchased.ProductName} was purchased from {productSlot} slot for ${productPurchased.ProductPrice}.  There are now {productPurchased.ProductQuantity} remaining.");
                     sw.WriteLine();
                 }
             }
@@ -81,7 +81,7 @@ namespace Vend.Classes
                 using (StreamWriter sw = new StreamWriter(fullPath, true))
                 {
                     sw.Write(DateTime.UtcNow);
-                    sw.Write($"The ending balance was ${currentBalance}. The change given was {changeGiven.Quarters} quarter(s), {changeGiven.Dimes} dime(s), and {changeGiven.Nickels} nickel(s).  The transaction is now finished.");
+                    sw.Write($"     The ending balance was ${currentBalance}. The change given was {changeGiven.Quarters} quarter(s), {changeGiven.Dimes} dime(s), and {changeGiven.Nickels} nickel(s).  The transaction is now finished.");
                     sw.WriteLine();
                 }
             }

@@ -12,7 +12,8 @@ namespace Vend
         public static void Main(string[] args)
         {
             VendMachine newVendingMachine = new VendMachine();
-            VendingMachineCLI runningMachine = new VendingMachineCLI(newVendingMachine);
+            Menus runningMenus = new Menus(newVendingMachine);
+            VendingMachineCLI runningMachine = new VendingMachineCLI(newVendingMachine, runningMenus);
         }
     }
 }

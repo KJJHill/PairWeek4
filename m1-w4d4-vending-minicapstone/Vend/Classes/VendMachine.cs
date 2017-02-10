@@ -58,31 +58,32 @@ namespace Vend.Classes
         }
         public void PurchaseAProduct(string slotNumber)
         {
-             if (itemsStocked[slotNumber].ProductQuantity > 0 && currentBalance >= itemsStocked[slotNumber].ProductPrice)
+            if (itemsStocked[slotNumber].ProductQuantity <= 0)
+            {
+                Console.WriteLine("Item is out of stock!");
+            }
+            if (itemsStocked[slotNumber].ProductQuantity > 0 && currentBalance >= itemsStocked[slotNumber].ProductPrice)
              {
                 itemsStocked[slotNumber].MinusProductQuantity();
                 currentBalance -= itemsStocked[slotNumber].ProductPrice;
                 Console.WriteLine($"Enjoy your {itemsStocked[slotNumber].ProductName}, there are {currentBalance} dollars remaining in the machine");
-             }
-             if (itemsStocked[slotNumber].ProductQuantity <= 0)
-            {
-                Console.WriteLine("Item is out of stock!");
+                LogWriter newLog = new LogWriter();
+                newLog.PurchaseAProductTransaction(itemsStocked[slotNumber], slotNumber);
             }
              if (currentBalance < itemsStocked[slotNumber].ProductPrice)
             {
                 Console.WriteLine("You haven't inserted enough money to buy that!");
             }
-            LogWriter newLog = new LogWriter();
-            newLog.PurchaseAProductTransaction(itemsStocked[slotNumber],slotNumber);
         }
 
         public void FinishTransaction()
         {
 
             Change currentChange = new Change(currentBalance);
-            Console.WriteLine($"Your change is {currentChange.Quarters} quarters, {currentChange.Dimes} dimes, and {currentChange.Nickels} nickels.");
+            Console.WriteLine($"\nYour change is {currentChange.Quarters} quarters, {currentChange.Dimes} dimes, and {currentChange.Nickels} nickels.");
             LogWriter newLog = new LogWriter();
             newLog.FinishedTransaction(currentBalance,currentChange);
+            currentBalance = 0;
         }
 
         public void LoadInventory()

@@ -20,81 +20,42 @@ namespace Vend.Classes
          * 
          * This menu loops until finish transaction is selected */
 
-        public VendingMachineCLI(VendMachine theVendingMachine)
+        public VendingMachineCLI(VendMachine theVendingMachine, Menus theMenus)
         {
             theVendingMachine.LoadInventory();
+            string startMenuInput = "";
             while (true)
+            // The above while-loop holds the entire program
+            // Should not be broken until you turn the vending machine off
             {
-                Console.WriteLine("Press (1) to go to the purchase menu.");
-                Console.WriteLine("Press (2) to go to the display menu.");
+                Console.WriteLine("\nPress (1) to go to the display menu.");
+                Console.WriteLine("Press (2) to go to the purchase menu.");
 
-                bool correctInput = false;
-                bool purchaseMenuCorrectInput = false;
-                string purchaseMenuInput = "";
-                do
+                //string purchaseMenuInput = "";
+
+                while (true)
+                // This while loops runs the Main menu of the CLI
+                // You break it when you want to continue to the Purchase menu
                 {
-                    string startMenuInput = Console.ReadLine();
+                    startMenuInput = Console.ReadLine();
+
                     if (startMenuInput == "1")
                     {
-                        do
-                        {
-                            Console.WriteLine("Press (1) to input money.");
-                            Console.WriteLine("Press (2) to select an item.");
-                            Console.WriteLine("Press (3) to finish the transaction.");
-                            purchaseMenuInput = Console.ReadLine();
-
-                            if (purchaseMenuInput != "1" && purchaseMenuInput != "2" && purchaseMenuInput != "3")
-                            {
-                                Console.WriteLine("Wrong input idiot, try again!");
-                            }
-                            else
-                            {
-                                purchaseMenuCorrectInput = true;
-                            }
-                        } while (!purchaseMenuCorrectInput);
-                        
-                        correctInput = true;
+                        theMenus.DisplayProducts();
+                        break;
                     }
+
                     if (startMenuInput == "2")
                     {
-                        foreach (KeyValuePair<string, VendingMachineItem> kvp in theVendingMachine.ItemsStocked)
-                        {
-                            Console.WriteLine($"{kvp.Key} {kvp.Value.ProductQuantity} {kvp.Value.ProductName} Remain. They are {kvp.Value.ProductPrice} each.");
-                        }
-                        correctInput = true;
+                        theMenus.DisplayPurchaseMenu();
+                        break;
                     }
-                } while (!correctInput);
-
-                if (purchaseMenuInput == "1")
-                {
-                    Console.WriteLine("How much money do you want to input? (.05)(.10)(.25)(1.00)(5.00)(10.00)(20.00)");
-                    Console.WriteLine("Say (STOP) when you're done inputting money.");
-                    double cashCounter = 0;
-                    bool shouldStop = false;
-                    do
+                    if (startMenuInput == "0")
                     {
-                        string cashInput = Console.ReadLine();
-                        if (cashInput == "STOP")
-                        {
-                            shouldStop = true;
-                        }
-                        else
-                        {
-                            theVendingMachine.FeedMoney(double.Parse(cashInput));
-                            cashCounter += double.Parse(cashInput);
-                        }
-                        Console.WriteLine($"There are {cashCounter} dollars in the machine");
-                    } while (!shouldStop);
-                }
-                if (purchaseMenuInput == "2")
-                {
-                    Console.WriteLine("What item do you want to purchase? (A1-D4)");
-                    theVendingMachine.PurchaseAProduct(Console.ReadLine());
-                }
-                if (purchaseMenuInput == "3")
-                {
-                    theVendingMachine.FinishTransaction();
-                    break;
+                        SalesReportWriter salesReport = new SalesReportWriter(theVendingMachine.ItemsStocked);
+                        salesReport.WriteSalesReport();
+                    }
+
                 }
             }
         }

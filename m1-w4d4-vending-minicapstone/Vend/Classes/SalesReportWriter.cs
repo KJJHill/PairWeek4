@@ -26,6 +26,7 @@ namespace Vend.Classes
         private string fileName = "Vendo-Matic-Sales ";
         private string dateTime = DateTime.UtcNow.ToString().Replace('/', '-').Replace(':', '.');
         private string fullPath;
+        private Dictionary<string, VendingMachineItem> vendingProducts;
 
         private const int STARTINGPRODUCTQUANTITY = 5;
         private double totalSales = 0;
@@ -36,14 +37,18 @@ namespace Vend.Classes
 
         public SalesReportWriter(Dictionary<string, VendingMachineItem> remainingVendingProducts)
         {
+            vendingProducts = remainingVendingProducts;
+        }
+        public void WriteSalesReport()
+        { 
             fileName += dateTime + ".csv";
             fullPath = Path.Combine(directory, fileName);
-
+            
             try
             {
                 using (StreamWriter sw = new StreamWriter(fullPath))
                 {
-                    foreach (KeyValuePair<string, VendingMachineItem> kvp in remainingVendingProducts)
+                    foreach (KeyValuePair<string, VendingMachineItem> kvp in vendingProducts)
                     {
                         sw.Write(kvp.Value.ProductName + "," + kvp.Value.ProductQuantity.ToString());
 
