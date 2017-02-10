@@ -24,7 +24,7 @@ namespace Vend.Classes
 
         private string directory = Environment.CurrentDirectory;
         private string fileName = "Vendo-Matic-Sales ";
-        private string dateTime = DateTime.UtcNow.ToString().Replace('/', '-').Replace(':', '.');
+        private string dateTime = String.Format("{0:MM.dd.yyyy hh.mm.ss.tt}", DateTime.Now);
         private string fullPath;
         private Dictionary<string, VendingMachineItem> vendingProducts;
 

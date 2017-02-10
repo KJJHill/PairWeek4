@@ -34,6 +34,7 @@ namespace VendTest.Classes
             vendingTest.Add("D4", test4);
 
             SalesReportWriter salesReportTest = new SalesReportWriter(vendingTest);
+            salesReportTest.WriteSalesReport();
             Assert.AreEqual(14.45, salesReportTest.TotalSales);
         }
     }
